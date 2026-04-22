@@ -60,7 +60,7 @@ Para ejecutar este proyecto localmente, asegúrate de tener instalado:
 
 1. Clona este repositorio:
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/clopez9518/react-frontend-movies.git
    cd streaming-platform
    ```
 
