@@ -10,9 +10,9 @@ import { useAuthStore } from "@/store/auth.store";
 import { useProfileStore } from "@/store/profile.store";
 import { useGetProfiles } from "@/streaming-app/hooks/useUsers";
 import { Link } from "react-router";
-import { Loading } from "../shared";
 import type { Profile } from "@/interfaces/entities/profile.interface";
 import { useQueryClient } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 
 interface Props {
     user: User
@@ -32,7 +32,9 @@ export function UserDropdown({ user }: Props) {
         setActiveProfile(profile)
     }
 
-    if (isLoading) return <Loading />
+    if (isLoading) {
+        return <Loader2 className="animate-spin" />
+    }
 
     return (
         <DropdownMenu modal={false}>
