@@ -1,4 +1,3 @@
-import { Bell, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { UserDropdown } from "../user/UserDropdown";
