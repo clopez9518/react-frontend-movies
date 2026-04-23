@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { getPagesPagination } from "@/helpers/getPagesPagination.helper";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 
@@ -18,24 +19,7 @@ export const PaginationComponent: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
 
-  const getPages = () => {
-    const pages: number[] = [];
-
-    const maxVisible = 5; // cantidad de botones visibles
-    let start = Math.max(1, page - Math.floor(maxVisible / 2));
-    let end = start + maxVisible - 1;
-
-    if (end > totalPages) {
-      end = totalPages;
-      start = Math.max(1, end - maxVisible + 1);
-    }
-
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-
-    return pages;
-  };
+  const { pages, lastVisiblePage, firstVisiblePage } = getPagesPagination(page, totalPages);
 
   return (
     <div className="flex items-center justify-center mt-6 mb-6 text-white space-x-2">
@@ -50,7 +34,7 @@ export const PaginationComponent: React.FC<PaginationProps> = ({
       </Button>
 
       {/* First */}
-      {page > 3 && (
+      {firstVisiblePage > 1 && (
         <>
           <Button variant="outline" size="sm" onClick={() => onPageChange(1)}>
             1
@@ -60,7 +44,7 @@ export const PaginationComponent: React.FC<PaginationProps> = ({
       )}
 
       {/* Pages */}
-      {getPages().map((p) => (
+      {pages.map((p) => (
         <Button
           key={p}
           onClick={() => onPageChange(p)}
@@ -73,7 +57,7 @@ export const PaginationComponent: React.FC<PaginationProps> = ({
       ))}
 
       {/* Last */}
-      {page < totalPages - 2 && (
+      {lastVisiblePage < totalPages && (
         <>
           <span>...</span>
           <Button variant="outline" size="sm" onClick={() => onPageChange(totalPages)}>

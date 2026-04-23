@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { useAuthStore } from "@/store/auth.store"
+import { Loader2 } from "lucide-react"
 
 
 interface FormData {
@@ -99,7 +100,11 @@ export const RegisterPage = () => {
                 </CardContent>
                 <CardFooter className="flex-col gap-2 mt-5">
                     <Button disabled={isPosting} type="submit" className="w-full">
-                        Register
+                        {isPosting ? (
+                            <Loader2 className="animate-spin" />
+                        ) : (
+                            "Register"
+                        )}
                     </Button>
                 </CardFooter>
             </form>

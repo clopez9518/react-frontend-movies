@@ -7,6 +7,7 @@ import { useAuthStore } from "@/store/auth.store"
 import { useProfileStore } from "@/store/profile.store"
 import { Link, useNavigate } from "react-router"
 import { useState } from "react"
+import { Loader2 } from "lucide-react"
 
 interface FormData {
     email: string
@@ -112,8 +113,13 @@ export const LoginPage = () => {
                 </CardContent>
                 <CardFooter className="flex-col gap-2 mt-5">
                     <Button disabled={isPosting} type="submit" className="w-full">
-                        Login
+                        {isPosting ? (
+                            <Loader2 className="animate-spin" />
+                        ) : (
+                            "Login"
+                        )}
                     </Button>
+
 
                     <Link className="ml-auto" to="/">
                         <div className="text-sm underline-offset-4 hover:underline">Continue as Guest</div>

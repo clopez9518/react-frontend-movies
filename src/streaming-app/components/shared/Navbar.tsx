@@ -46,12 +46,12 @@ export const Navbar = () => {
             ? <UserDropdown user={user} />
             : <Link to="/auth/login"><Button>Login</Button></Link>
           }
-          <button className="text-[var(--text-primary)] hover:text-gray-300 transition-colors">
+          {/* <button className="text-[var(--text-primary)] hover:text-gray-300 transition-colors">
             <Search className="w-5 h-5" />
           </button>
           <button className="text-[var(--text-primary)] hover:text-gray-300 transition-colors">
             <Bell className="w-5 h-5" />
-          </button>
+          </button> */}
         </div>
       </div>
 

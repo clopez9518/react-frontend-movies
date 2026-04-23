@@ -55,17 +55,17 @@ export const appRouter = createBrowserRouter(
                     ]
                 },
                 {
-                    path: '/movie/:id',
+                    path: 'movie/:id',
                     element: <MoviePage />
                 },
                 {
-                    path: '/mylist',
+                    path: 'mylist',
                     element: <MyListPage />
                 }
             ]
         },
         {
-            path: '/auth',
+            path: 'auth',
             element: <AuthLayout />,
             children: [
                 {
@@ -79,7 +79,7 @@ export const appRouter = createBrowserRouter(
             ]
         },
         {
-            path: '/account',
+            path: 'account',
             element: (
                 <ProtectedRoute>
                     <AccountLayout />
@@ -97,7 +97,7 @@ export const appRouter = createBrowserRouter(
             ]
         },
         {
-            path: '/whos-watching',
+            path: 'whos-watching',
             element: (
                 <ProtectedRoute>
                     <WhosWatchingPage />
@@ -108,7 +108,7 @@ export const appRouter = createBrowserRouter(
 
         // Admin routes
         {
-            path: '/admin',
+            path: 'admin',
             element: (
                 <AdminRoute>
                     <AdminLayout />
