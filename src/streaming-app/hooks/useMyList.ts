@@ -3,11 +3,14 @@ import { addToMyListAction, getMyListAction, removeFromMyListAction } from "../a
 import { notify } from "@/lib/notify"
 
 
+import { useAuthStore } from "@/store/auth.store"
+
 export const useGetMyList = (profileId: string) => {
+    const { status } = useAuthStore()
     return useQuery({
         queryKey: ['my-list', profileId],
         queryFn: () => getMyListAction(profileId),
-        enabled: !!profileId,
+        enabled: !!profileId && profileId !== 'undefined' && status === 'Authenticated',
         retry: 1
     })
 }
