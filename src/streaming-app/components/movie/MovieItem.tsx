@@ -71,7 +71,8 @@ export const MovieItem = ({ movie }: Props) => {
                             </Link>
 
                             {
-                                !movie.isInMyList
+                                activeProfile && (
+                                    !movie.isInMyList
                                     ? (<button
                                         onClick={() => handleAddMovie(movie)}
                                         className="cursor-pointer w-8 h-8 rounded-full border-2 border-gray-400 flex items-center justify-center hover:border-white transition-colors"
@@ -85,8 +86,8 @@ export const MovieItem = ({ movie }: Props) => {
                                     >
                                         <Trash className="w-4 h-4 text-gray-400 group-hover:text-white" />
                                     </button>)
+                                )
                             }
-
 
                         </div>
                         <div className="flex flex-wrap gap-1">

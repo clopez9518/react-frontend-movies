@@ -1,4 +1,4 @@
-import { Play, Plus, ThumbsUp, ChevronDown, Trash } from "lucide-react"
+import { Play, Plus, ChevronDown, Trash } from "lucide-react"
 import { useState, useEffect } from "react"
 import { Link } from "react-router"
 import type { Genre } from "@/interfaces"
@@ -86,20 +86,19 @@ export const MoviePreview = ({ item, left, top, align, cancelClose, close }: Pro
                     </Link>
 
                     {
-                        !isInMyList
+                        activeProfile && (!isInMyList
                             ? <button onClick={handleAdd} className="border border-gray-400 rounded-full p-2 hover:border-white">
                                 <Plus size={28} />
                             </button>
 
                             : <button onClick={handleRemove} className="border border-gray-400 rounded-full p-2 hover:border-white">
                                 <Trash size={28} />
-                            </button>
+                            </button>)
                     }
 
-
-                    <button className="border border-gray-400 rounded-full p-2 hover:border-white">
+                    {/* <button className="border border-gray-400 rounded-full p-2 hover:border-white">
                         <ThumbsUp size={28} />
-                    </button>
+                    </button> */}
 
                     <div className="ml-auto">
                         <button className="border border-gray-400 rounded-full p-2 hover:border-white">

@@ -17,7 +17,8 @@ export const Hero = ({ movie }: Props) => {
     const { mutate: removeFromMyList } = useRemoveFromMyList()
 
     const handleAddMovie = () => {
-        if (!activeProfile) return
+        if (!activeProfile) return;
+        
         addToMyList({
             profileId: activeProfile.id.toString(),
             movieId: movie.id.toString()
@@ -70,13 +71,15 @@ export const Hero = ({ movie }: Props) => {
                             </button>
                         </Link>
                         {
-                            !movie.isInMyList
+                            activeProfile && (
+                                !movie.isInMyList
                                 ? (<button onClick={handleAddMovie} className="border text-white border-gray-400 rounded-full p-2 hover:border-white">
                                     <Plus size={28} />
                                 </button>)
                                 : (<button onClick={handleRemoveMovie} className="border text-white border-gray-400 rounded-full p-2 hover:border-white">
                                     <Trash size={28} />
                                 </button>)
+                            )
                         }
 
                     </div>

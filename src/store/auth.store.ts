@@ -2,6 +2,7 @@ import type { AuthResponse } from "@/interfaces/auth/auth.interface"
 import type { User } from "@/interfaces/entities/user.interface"
 import { loginAction, logoutAction, refreshTokenAction, registerAction, selectProfileAction } from "@/streaming-app/actions/auth/auth.actions"
 import { create } from "zustand"
+import { useProfileStore } from './profile.store'
 
 type AuthStatus = 'Authenticated' | 'Unauthenticated' | 'Loading'
 
@@ -72,6 +73,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     logout: async () => {
         await logoutAction()
         set({ token: null, user: null, status: 'Unauthenticated' })
+        useProfileStore.getState().clearActiveProfile()
     },
 
     refreshToken: async () => {
@@ -91,6 +93,7 @@ export const useAuthStore = create<AuthState>((set) => ({
                 user: null,
                 status: 'Unauthenticated'
             })
+            useProfileStore.getState().clearActiveProfile()
             throw error
         }
     },
@@ -112,6 +115,7 @@ export const useAuthStore = create<AuthState>((set) => ({
                 user: null,
                 status: 'Unauthenticated'
             })
+            useProfileStore.getState().clearActiveProfile()
             throw error
         }
     },
