@@ -16,7 +16,7 @@ export const GenreDropdown = () => {
     return (
         <DropdownMenu dir="ltr">
             <DropdownMenuTrigger asChild >
-                <Button className="cursor-pointer text-white text-md bg-transparent dark hover:bg-[var(--primary)]">Genres: </Button>
+                <Button className="cursor-pointer text-white text-md dark hover:bg-[var(--primary)]">Genres: </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[500px] p-4 bg-[var(--background)] dark" align="start">
                 <div className="grid grid-cols-3 gap-2">
