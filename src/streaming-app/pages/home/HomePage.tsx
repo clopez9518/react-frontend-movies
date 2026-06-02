@@ -17,8 +17,6 @@ export const HomePage = () => {
     isLoading,
     error } = useHome(activeProfile?.id.toString() ?? '');
 
-  console.log(activeProfile)
-
   if (isLoading) {
     return <Loading />
   }
